@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    color: white;
+}
+
+header .logo{
+    font-size: 23px;
+    font-weight: bold;
+}
+
+header .menu{
+    
+    width:30px ;
+    height: 20px ;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+header .menu-line{
+    height: 3px;
+    background-color: #E6E5E3;
+}
+
+
+.container{
+    display: flex;
+   height: 100vh;
+   
+    
+}
+
+.container .leftside{
+    /* background-color: #037AB1 ;   */ 
+   /*  background-color: #3B576D;  */
+   background-color: #84030D;
+    flex: 1;
+}
+
+.container .rightside{
+    flex: 1;
+    background-image: url("../imagens/isaac1.jpg") ;
+    background-size: cover;
+    background-position: center center;
+
+}
+
+footer{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
