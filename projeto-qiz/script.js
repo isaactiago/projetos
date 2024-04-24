@@ -14,9 +14,9 @@ document.querySelector("button").addEventListener("click", reset);
 
 function showQuestion(){ // função que vai mostrar a questão 
 
-    //verificar se existe a função 
+   
 
-    if(questions[currentQuestion]){
+    if(questions[currentQuestion]){ //verificar se existe a função 
 
         let q = questions[currentQuestion] ; 
 
