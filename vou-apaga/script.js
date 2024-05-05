@@ -1,95 +1,86 @@
 //dados 
 
-let input = document.querySelector('.input-task') ; 
+let input = document.querySelector(".input-task")
+let list = document.querySelector(".list")
 
-let areaLista = document.querySelector('.list')
-
-let lista = [] ; 
+let listaDetarefas = [] ; 
 
 
 
 function adicionar(){
-    
-    if(input.value !== ''){
-        //roda alguma fuinção 
 
-        ListaDeTarefas()
-    }else{
-        alert('Escreva algo primerio')
-    }
+  //verificação se tem algo escrito 
+
+  if(input.value !== ''){
+        //tem algo ; 
+
+        AddlistaDeTarefas()
+  }else{
+    alert("Escreva allgo ´rimeiro ")
+  }
+
 }
 
 
+function  AddlistaDeTarefas(){
 
-function  ListaDeTarefas(){
-
-    lista.push({
-        tarefa : input.value,
-        concluida : false,
+    listaDetarefas.push({
+        tarefas : input.value,
+        concluida: false,
     })
 
     input.value = '' ; 
-   
-    MostraLista()
+
+    MostrarLista()
 }
 
 
-function   MostraLista(){
 
-    
- 
-  
-    let newli = ''
-   
+function  MostrarLista(){
 
-   
-  
-    
-    lista.forEach((item,index)=>{
-         
-        newli = newli +  ` <li class="task ${item.concluida && "done"}">
+    newli =  '' ; 
+
+    listaDetarefas.forEach((item,index)=>{
+
+        newli = newli +  `<li class="task ${listaDetarefas[index].concluida && "done"}">
         <img src="#" alt="check-na-tarefa" onclick="concluir(${index})">
-         <p>${item.tarefa}</p>
-         <img src="#" alt="tarefa-para-lixo" onclick="lixo(${index})">
+         <p>${item.tarefas}</p>
+         <img src="#" alt="tarefa-para-lixo" onclick="limpa(${index})">
         </li>`
-       
-     })
+    
+    
+    })
 
-    areaLista.innerHTML = newli ;
+    list.innerHTML = newli ; 
 
-    localStorage.setItem('lista',JSON.stringify(lista));
-
+    localStorage.setItem('tarefas',JSON.stringify(listaDetarefas))
+    
 }
 
 function recarregarTarefas(){
+    let localStorageLista = localStorage.getItem('tarefas') ; 
 
-    const tarefasDoLocalStorage = localStorage.getItem('lista');
-
-    if(tarefasDoLocalStorage){
-        lista = JSON.parse(tarefasDoLocalStorage) ; 
+    if(localStorageLista){
+        listaDetarefas = JSON.parse(localStorageLista);
     }
-  
 
-    MostraLista() ; 
+    MostrarLista()
 }
 
-recarregarTarefas() ; 
+recarregarTarefas()
+
+function limpa(index){
+
+    listaDetarefas.splice(index,1) ; 
+
+    MostrarLista();
+
+}
+
 
 function concluir(index){
 
-    lista[index].concluida = !lista[index].concluida ; 
-    MostraLista()
+    listaDetarefas[index].concluida = !listaDetarefas[index].concluida ; 
+    MostrarLista() ; 
     
 }
-
-
-
-function lixo(index){
-
-    lista.splice(index,1)
-
-    MostraLista()
-   
-}
-
-
